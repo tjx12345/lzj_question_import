@@ -1,0 +1,17 @@
+{
+  "name": "lzj_question_import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "inquirer": "^6.2.0",
+    "node-xlsx": "^0.12.1"
+  }
+}
