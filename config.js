@@ -1,10 +1,9 @@
 let options = {
-    titles: ['试题编号','章','节','知识点','题型','题干','选项A','选项B','选项C','选项D','正确答案','难易度','命题人'
+    titles: ['章','节','知识点','题型','题干','选项A','选项B','选项C','选项D','正确答案','难易度','命题人'
     // ,'课','流水'
     ]
 }
 options.fields = Object.keys( {
-  "_id": "GL0101001",
   "chapter": 1,
   "section": 1,
   "knowledge": "毛泽东思想的形成和发展",
@@ -23,10 +22,10 @@ options.fields = Object.keys( {
 
 let rules = {
   // '8A6ART':/毛泽东思想和中国特色社会主义理论/,
-  'N3KN7V':/马克思主义/,
-  'PYZZSM':/思想道德修/,
-  'X7UHFG':/中国近.*代史/,
-  'b76e3d80-6667-11e8-b871-8f0b8d401b2d':/毛泽东思想/
+  // 'N3KN7V':/马克思主义/,
+  'PYZZSM-1':/思想道德修/,
+  'X7UHFG-1':/中国近.*代史/,
+  'MZDSX-1':/毛泽东思想/
 }
 const path = require('path');
 module.exports = {

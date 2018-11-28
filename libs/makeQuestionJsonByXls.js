@@ -2,12 +2,18 @@ const xlsTools = require('./xlsxTools.js');
 const fs = require('fs');
 var inquirer = require('inquirer');
 const path = require('path');
+const uuidv1 = require('uuid/v1');
+
+
 
 function _getPath(...paths) {
     return path.join(...paths);
 }
 
 const { options, rules, dist } = require('../config');
+
+const NUM = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十', '二十一', '二十二', '二十三', '二十四', '二十五'];
+
 
 
 function _getCourseCode(name) {
@@ -18,12 +24,27 @@ function _getCourseCode(name) {
     }
 }
 
+function _getChapter(arr) {
+    let o = {};
+    arr.forEach(oo => {
+        let chapterNum = (oo.chapter - 0);
+        if (oo.chapter == undefined) {
+            return;
+        }
+        o[chapterNum + ''] = `第${NUM[chapterNum]}章`;
+    });
+    return o;
+}
+
 exports.makeJsonByXls = function(src) {
     let arr = xlsTools.parseXlsx(src, options);
 
     let courseCode = _getCourseCode(src)
     console.log(src, '文件:', courseCode, ',记录数:', arr.length);
     arr = operationQuestionSelects(arr, courseCode);
+
+    let obj = _getChapter(arr);
+    console.log(JSON.stringify(obj));
 
     return arr;
 }
@@ -50,7 +71,8 @@ function operationQuestionSelects(data, courseCode) {
             const type = String(it.type).trim()
             const degree = String(it.difficulty).trim()
             tem.push({
-                question_id: it._id,
+
+                question_id: uuidv1(),
                 course_code: courseCode,
                 chapter: it.chapter,
                 html: it.stem,
